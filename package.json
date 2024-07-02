@@ -1,14 +1,16 @@
 {
+	"scripts": {
+		"dev": "vite ."
+	},
 	"devDependencies": {
+		"@types/node": "^20.12.11",
 		"eslint": "^9.1.1",
 		"prettier": "^3.2.5",
+		"ts-node": "^10.9.2",
 		"typescript": "^5.4.5",
-		"vite": "^5.2.10",
 		"vitest": "^1.5.2"
 	},
 	"dependencies": {
-		"pinia": "^2.1.7",
-		"vue": "^3.4.26",
-		"vue-router": "^4.3.2"
+		"@vue/runtime-core": "^3.4.27"
 	}
 }
