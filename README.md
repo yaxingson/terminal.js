@@ -16,6 +16,8 @@
 ```sh
 npm i electron-builder -D
 
+npm adduser
+
 
 ```
 
