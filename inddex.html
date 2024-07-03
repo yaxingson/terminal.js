@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<body>
+  <ul class="flex">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <button onclick="clickHandle('soetas')">click me</button>
+</body>
+
+<script defer>
+"use strict"
+
+function clickHandle(name) {
+  alert('hi, '+name)
+}
+
+const elem = document.getElementsByClassName('flex')[0]
+
+console.log(document.getElementById('app'))
+console.log(document.querySelector('ul').childNodes)
+console.log(document.getElementsByTagName('ul')[0].children)
+console.log(elem.previousSibling, elem.previousElementSibling)
+
+elem.setAttribute('data-list', ['', '', ''].join(','))
+
+elem.classList.add('overflow')
+
+console.log(elem.classList.contains('flex'))
+
+elem.firstElementChild.textContent = '<em></em>'
+
+const img = new Image(500)
+
+img.src = 'https://www.opus-software.com.br/wp-content/uploads/2018/09/nodejs.jpg'
+img.alt = 'node.js'
+
+document.body.appendChild(img)
+
+const btn = document.querySelector('button')
+
+btn.onclick = ()=>{
+  prompt('enter your username')
+}
+
+btn.onclick = null
+
+btn.addEventListener('click', ()=>{
+  confirm('save modify ?')
+ 
+})
+
+btn.addEventListener('click', (ev)=>{
+  // confirm('quit ?')
+  ev.preventDefault()
+  ev.stopPropagation()
+
+})
+
+
+</script>

@@ -1,48 +1,32 @@
-"use strict"
-const http = require('node:http')
-const { parse } = require('node:url')
-
-
-let account = 'Bertie Neal'
+const fs = require('node:fs')
+const { resolve } = require('node:path')
 
 /**
+ * 以树形结构显示目录结构
  * 
- * @param {*} o 
- * @returns 
+ * @param {string} path 
+ * @param {string[]} excludes 
+ * @param {number} deep 
  */
-function dir(o) {
-  return Reflect.ownKeys(Reflect.getPrototypeOf(o))
+function tree(path, excludes=[], deep=1) {
+  const numOfParams = tree.length
+  const numOfArgs = arguments.length
+
+  const dirOrFiles = fs.readdirSync(path)
+
+  dirOrFiles.forEach(name=>{
+    const pathname = resolve(path, name)
+    if(excludes.indexOf(name) === -1 && fs.statSync(pathname).isDirectory()) {
+      // arguments.callee(pathname, excludes, deep+1)
+      tree(pathname, excludes, deep+1)
+    } else {
+      console.log(`${' '.repeat(deep-1)}|${'-'.repeat(deep)} ${name}`)
+    }
+  })
 }
 
-function bool(o) {
-  return !!o
-}
-
-console.log(account, typeof null, typeof unknown)
-console.log(Number('67.2px'), parseFloat('19.21px'))
-console.log(dir(new Object()), '1'- -'1', bool(null), (9, false, 'fu@gidsas.ao'))
-console.log(void 0)
-
-;(function() {
-  let language = 'javascript'
+function $() {
   
-  for(let i in language) {
-    console.log(`${i} => ${language[i]}`)
-  }
 
-})()
-
-const customer = {
-  name:'',
-  email:'',
-  phone:'',
 }
-
-console.log(eval('void 0; 12/2; var i = 1; i = 67'))
-
-function sum() {
-  return Array.from(arguments).reduce((prev, val)=>prev+=val, 0)
-}
-
-console.log(sum(8, 2, 1))
 
